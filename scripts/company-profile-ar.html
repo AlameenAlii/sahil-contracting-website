@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>ساحل — ملف الشركة</title>
+<style>
+  @page { size: A4; margin: 0; }
+  /* latin runs */
+  [dir="ltr"] { font-family: "Inter", "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif; }
+  /* Sahil profile fonts -- resolved from ../public/fonts so this file
+     renders in the correct faces on any machine, with no network. */
+  @font-face { font-family: "Inter"; src: url("../public/fonts/Inter-Variable.ttf") format("truetype-variations"); font-weight: 100 900; font-style: normal; }
+  @font-face { font-family: "Noto Kufi Arabic"; src: url("../public/fonts/NotoKufiArabic-Variable.ttf") format("truetype-variations"); font-weight: 100 900; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green: #278608;
+    --ink: #16181C;
+    --steel: #1E2620;
+    --sand: #F1F5EF;
+    --peach: #E6F2E0;
+    --line: #DCE3D8;
+    --muted: #6B7280;
+  }
+  body {
+    font-family: "Noto Kufi Arabic", "Inter", "Noto Sans Arabic", "Liberation Sans", Arial, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm; height: 297mm;
+    position: relative; overflow: hidden;
+    page-break-after: always;
+    background: #fff;
+  }
+  .page:last-child { page-break-after: auto; }
+  .pad {
+    padding: 18mm 16mm 24mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .eyebrow {
+    font-size: 8pt; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--green);
+  }
+  h1 { font-size: 34pt; line-height: 1.06; font-weight: 800; letter-spacing: -.02em; }
+  h2 { font-size: 19pt; line-height: 1.15; font-weight: 800; letter-spacing: -.01em; }
+  h3 { font-size: 11pt; line-height: 1.25; font-weight: 700; }
+  p  { font-size: 9.5pt; line-height: 1.62; color: #33383F; }
+  .lead { font-size: 11pt; line-height: 1.55; color: #2B3038; }
+  .small { font-size: 8pt; line-height: 1.5; color: var(--muted); }
+  .rule { height: 3px; width: 54px; background: var(--green); border-radius: 2px; }
+  .mt2 { margin-top: 2mm; } .mt4 { margin-top: 4mm; } .mt6 { margin-top: 6mm; }
+  .mt8 { margin-top: 8mm; } .mt12 { margin-top: 12mm; }
+
+  /* ---------- cover ---------- */
+  .cover { position: absolute; inset: 0; }
+  .cover img.bg { width: 100%; height: 100%; object-fit: cover; }
+  .cover .veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(22,24,28,.72) 0%, rgba(22,24,28,.62) 42%, rgba(22,24,28,.94) 100%);
+  }
+  .cover .inner {
+    position: absolute; inset: 0; padding: 18mm 16mm;
+    display: flex; flex-direction: column; justify-content: space-between;
+    color: #fff;
+  }
+  .cover h1 { color: #fff; max-width: 150mm; }
+  .cover .lead { color: rgba(255,255,255,.86); max-width: 130mm; }
+  .badge {
+    display: inline-block; padding: 2.4mm 5mm; border-radius: 99px;
+    background: rgba(252,132,0,.16); border: 1px solid rgba(252,132,0,.55);
+    color: #FFC780; font-size: 8pt; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .cstrip {
+    display: flex; gap: 8mm; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,.22); padding-top: 6mm;
+  }
+  .cstrip > div { min-width: 40mm; }
+  .cstrip .k {
+    font-size: 7pt; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+  }
+  .cstrip .v { font-size: 10pt; font-weight: 700; color: #fff; margin-top: 1.5mm; }
+</style>
+<style>
+/* Client logo band -- normalised 3:1 logo boxes, three per row. */
+.clients { display:flex; flex-wrap:wrap; border:1px solid var(--line); border-radius:4mm; overflow:hidden; background:#fff; }
+.clients > div { width:calc(100% / 3); padding:4.5mm 5mm; border-inline-end:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+.clients > div:nth-child(3n) { border-inline-end:0; }
+.clients > div:nth-child(n+4) { border-bottom:0; }
+.clients img { width:100%; max-width:38mm; height:auto; display:block; }
+</style>
+<style>
+    .codes { display:flex; flex-wrap:wrap; border:1px solid var(--line); border-radius:4mm; overflow:hidden; background:#fff; }
+    .codes > div { width:calc(100% / 2); padding:5mm 5.5mm; border-inline-end:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .codes > div:nth-child(2n) { border-inline-end:0; }
+    .codes > div:nth-child(n+3) { border-bottom:0; }
+    .codes .c { font-size:9pt; font-weight:800; color:var(--green); letter-spacing:0.04em; }
+    .codes .n { font-size:9.5pt; font-weight:700; margin-top:1.2mm; }
+    .codes .d { font-size:8pt; line-height:1.55; color:var(--muted); margin-top:1.4mm; }
+  </style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="page">
+  <div class="cover">
+    <img class="bg" src="../src/assets/mn-hero-site.jpg" alt="" />
+    <div class="veil"></div>
+    <div class="inner">
+      <div>
+        <img src="../public/sahil-logo-white.png" style="width:34mm;height:auto" alt="Sahil" />
+        <div class="mt8"><span class="badge">ملف الشركة · 2026</span></div>
+      </div>
+      <div>
+        <p class="eyebrow">جدة · المملكة العربية السعودية</p>
+        <h1 class="mt4">نبني<br />مساحتك<br />المثالية.</h1>
+        <p class="lead mt6">
+          تنفّذ شركة ساحل للمقاولات أعمال البناء والتشطيب والتجهيز الداخلي
+          للمشاريع السكنية والتجارية والصناعية في جدة وفي مختلف مناطق المملكة — مقاول
+          واحد مسؤول من أول مخطط حتى إغلاق آخر ملاحظة عند التسليم.
+        </p>
+      </div>
+      <div class="cstrip">
+        <div><div class="k">الهاتف</div><div class="v" dir="ltr">+966 50 000 0000</div></div>
+        <div><div class="k">البريد الإلكتروني</div><div class="v" dir="ltr">info@example.com</div></div>
+        <div><div class="k">الموقع الإلكتروني</div><div class="v" dir="ltr">example.com</div></div>
+        <div><div class="k">المقر الرئيسي</div><div class="v">جدة، السعودية</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line); padding-bottom: 5mm;
+  }
+  .hdr img { width: 22mm; height: auto; }
+  .hdr .pg { font-size: 8pt; font-weight: 700; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
+  .ftr {
+    position: absolute; bottom: 10mm; left: 16mm; right: 16mm;
+    display: flex; justify-content: space-between;
+    border-top: 1px solid var(--line); padding-top: 4mm;
+    font-size: 7.5pt; color: var(--muted);
+  }
+  .stats { display: flex; border: 1px solid var(--line); border-radius: 4mm; overflow: hidden; }
+  .stats > div { flex: 1; padding: 6mm 4mm; text-align: center; border-right: 1px solid var(--line); }
+  .stats > div:last-child { border-right: 0; }
+  .stats .n { font-size: 22pt; font-weight: 800; color: var(--green); line-height: 1; }
+  .stats .l { font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 2mm; }
+  .two { display: flex; gap: 6mm; }
+  .card { border: 1px solid var(--line); border-radius: 4mm; padding: 7mm; }
+  .card.sand { background: var(--sand); }
+  .svc { display: flex; gap: 6mm; align-items: flex-start; padding: 5mm 0; border-bottom: 1px solid var(--line); }
+  .svc:last-child { border-bottom: 0; }
+  .svc .num {
+    width: 11mm; height: 11mm; flex: 0 0 11mm; border-radius: 3mm;
+    background: var(--peach); color: var(--green);
+    font-size: 11pt; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 3mm; }
+  .chip {
+    font-size: 7.5pt; font-weight: 600; color: #3A4048;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 99px; padding: 1.4mm 3.4mm;
+  }
+</style>
+
+<!-- ============ PAGE 2 — WHO WE ARE ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">من نحن</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">نبذة عنا</p>
+      <h2 class="mt2">مقاول واحد، مسؤولية واحدة من البداية للتسليم</h2>
+      <div class="rule mt4"></div>
+      <p class="mt4">
+        ساحل هو الاسم التجاري لشركة ساحل للمقاولات، مقاول عام مقره
+        جدة يعمل في المشاريع السكنية والتجارية والصناعية والمؤسسية في المملكة العربية
+        السعودية. نأخذ المشروع من الهيكل الإنشائي إلى التشطيبات والنجارة والأثاث — أي
+        كامل الأعمال التي يحتاجها المبنى قبل أن يصبح جاهزًا للاستخدام.
+      </p>
+      <p class="mt4">
+        ولأن البناء والتشطيب والتصميم الداخلي وإدارة المشاريع كلها داخل شركة واحدة، يوقّع
+        العميل عقدًا واحدًا ويحاسب جهة واحدة. يعمل أكثر من عشرين مهندسًا وقوة تنفيذ تقارب
+        مئتي عامل وفق برنامج زمني معلن، ويُقاس التقدم على هذا البرنامج لا بعبارات عامة،
+        مع ضمان لمدة سنة على الأعمال المنجزة.
+      </p>
+    </div>
+
+    <div class="stats mt8">
+      <div><div class="n" dir="ltr">8+</div><div class="l">سنوات من العمل</div></div>
+      <div><div class="n" dir="ltr">20+</div><div class="l">مهندسًا في الفريق</div></div>
+      <div><div class="n" dir="ltr">200+</div><div class="l">عاملًا في المواقع</div></div>
+      <div><div class="n" dir="ltr">4</div><div class="l">خطوط خدمة</div></div>
+    </div>
+
+    <div class="two mt8">
+      <div class="card sand" style="flex:1">
+        <p class="eyebrow">رؤيتنا</p>
+        <p class="mt2">
+          أن نكون المقاول الأول الذي يُذكر في السعودية حين يجب أن يُبنى المشروع بإتقان
+          ويُسلَّم في تاريخه المتفق عليه — نكبر مع أهداف التنمية في المملكة ورؤية
+          السعودية 2030.
+        </p>
+      </div>
+      <div class="card sand" style="flex:1">
+        <p class="eyebrow">رسالتنا</p>
+        <p class="mt2">
+          أن ننفّذ البناء والتشطيب والتصميم الداخلي وإدارة المشاريع تحت عقد واحد واضح
+          المسؤولية — مواد معتمدة، وإشراف مؤهل، وبرنامج زمني صادق، وتشطيب يصمد أمام
+          سنة الاستخدام الأولى.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class="ftr"><span>شركة ساحل للمقاولات</span><span>example.com · 02</span></div>
+</section>
+
+<!-- ============ PAGE 3 — SERVICES ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">ما نقدمه</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">ما نقدمه</p>
+      <h2 class="mt2">أربعة خطوط خدمة ومقاول واحد مسؤول</h2>
+      <div class="svc mt4">
+        <div class="num">01</div>
+        <div>
+          <h3>البناء والإنشاءات</h3>
+          <p class="mt2">فلل ومبانٍ تجارية ومصانع وتوسعات، من التخطيط والتوقيع على الأرض إلى الهيكل والغلاف الخارجي حتى يصبح المبنى محكمًا وجاهزًا للخدمة — تنفيذ وفق كود البناء السعودي مع حفظ سجلات الفحص أثناء سير العمل.</p>
+          <div class="chips">
+            <span class="chip">الحفر والأساسات</span><span class="chip">الهياكل الخرسانية</span>
+            <span class="chip">أعمال البلوك</span><span class="chip">الغلاف الخارجي</span>
+            <span class="chip">الأعمال الكهروميكانيكية</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="num">02</div>
+        <div>
+          <h3>التشطيبات الداخلية والخارجية</h3>
+          <p class="mt2">الأعمال التي يُحكم على المبنى من خلالها: اللياسة والبلاط والرخام والدهان والجبس والأسقف المستعارة والأبواب والتكسيات الخارجية — تُنفّذ من جدول تشطيبات معتمد تُحدَّد فيه المناسيب والفواصل والسماحات قبل بدء التنفيذ.</p>
+          <div class="chips">
+            <span class="chip">لياسة ودهان</span><span class="chip">بلاط ورخام</span>
+            <span class="chip">أسقف جبسية</span><span class="chip">أبواب</span>
+            <span class="chip">واجهات</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="num">03</div>
+        <div>
+          <h3>الأثاث والتصميم الداخلي</h3>
+          <p class="mt2">توزيع المساحات والنجارة والأثاث المتحرك تُحدَّد وتُركَّب كحزمة واحدة، ليكون التصميم الذي عُرض هو نفسه الذي يُنفَّذ — بما في ذلك المطابخ وخزائن الملابس وكاونترات الاستقبال واختيارات الإضاءة.</p>
+          <div class="chips">
+            <span class="chip">توزيع المساحات</span><span class="chip">نجارة وتنفيذ</span>
+            <span class="chip">مطابخ</span><span class="chip">إضاءة</span>
+            <span class="chip">تأثيث</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="num">04</div>
+        <div>
+          <h3>إدارة المشاريع</h3>
+          <p class="mt2">البرنامج الزمني والمشتريات وتنسيق مقاولي الباطن وفحص الجودة وضبط التكاليف — متاحة على أعمالنا أو كخدمة مستقلة على مشروع ينفّذه مقاول آخر.</p>
+          <div class="chips">
+            <span class="chip">برنامج زمني</span><span class="chip">مشتريات</span>
+            <span class="chip">إشراف</span><span class="chip">تسليم</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt8">
+      <img src="../src/assets/mn-hero-site.jpg" alt="" style="width:100%;height:54mm;object-fit:cover;border-radius:4mm;display:block" />
+      <p class="small mt2">مهندسونا ومشرفونا في الموقع، في مشاريع نحن مسؤولون عنها تعاقديًا.</p>
+    </div>
+  </div>
+  <div class="ftr"><span>شركة ساحل للمقاولات</span><span>example.com · 03</span></div>
+</section>
+
+<style>
+  .pgrid { display: flex; flex-wrap: wrap; gap: 3mm 5mm; }
+  .proj {
+    width: calc((100% - 5mm) / 2);
+    border: 1px solid var(--line); border-radius: 4mm; overflow: hidden;
+  }
+  .proj img { width: 100%; height: 19mm; object-fit: cover; display: block; }
+  .proj .body { padding: 3.4mm 4.5mm; }
+  .proj .cat {
+    font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--green);
+  }
+  .proj h3 { margin-top: 2mm; font-size: 10pt; }
+  .proj .meta { font-size: 7.5pt; color: var(--muted); margin-top: 1.5mm; font-weight: 600; }
+  .proj p { font-size: 8pt; line-height: 1.5; margin-top: 2.5mm; }
+</style>
+
+<!-- ============ PAGE 3 — PROJECTS ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">مشاريع مختارة</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">أعمالنا</p>
+      <h2 class="mt2">مشاريع منجزة مختارة</h2>
+      <div class="rule mt4"></div>
+      <p class="mt4" style="max-width:150mm">
+        أعمال صناعية وتجارية ومؤسسية، كبيرة وصغيرة. نُفِّذ كل مشروع مما يلي وفق ما ينطبق
+        من كود البناء السعودي ومعايير NFPA و IEC و ASHRAE، مع توثيق الاختبار والتشغيل
+        التجريبي عند التسليم.
+      </p>
+    </div>
+
+    <div class="pgrid mt4">
+      <div class="proj">
+        <img src="../src/assets/mn-proj-telecom-ict.jpg" alt="" />
+        <div class="body">
+          <div class="cat">التشغيل والصيانة</div>
+          <h3>شبكة اتصالات — تشغيل وصيانة متعدد المواقع</h3>
+          <div class="meta">الرياض · تشغيل متعدد المواقع</div>
+          <p>تشغيل وصيانة شبكات تقنية المعلومات والاتصالات في عدة مواقع، بما يضمن استقرار الأداء وتقليل زمن التوقف وموثوقية الخدمة.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-packaging-mep-fire.jpg" alt="" />
+        <div class="body">
+          <div class="cat">الأعمال الكهروميكانيكية والحماية من الحريق</div>
+          <h3>مصنع التغليف — الأعمال الكهروميكانيكية والحريق</h3>
+          <div class="meta">الخرج · مرفق صناعي</div>
+          <p>تنفيذ الأعمال الكهروميكانيكية وأنظمة الحماية من الحريق داخل مرفق صناعي قائم، وفق معايير السلامة الصناعية والمعايير الهندسية.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-medical-plantroom.jpg" alt="" />
+        <div class="body">
+          <div class="cat">الأعمال الكهروميكانيكية والحماية من الحريق</div>
+          <h3>مصنع الأجهزة الطبية — الأعمال الكهروميكانيكية والحريق</h3>
+          <div class="meta">الخرج · مرفق صناعي</div>
+          <p>تركيبات ميكانيكية وكهربائية وفق الكود، تُنتج أنظمة موثوقة وعالية الكفاءة لتشغيل صناعي متصل.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-plastics-commissioning.jpg" alt="" />
+        <div class="body">
+          <div class="cat">الأعمال الكهروميكانيكية والحماية من الحريق</div>
+          <h3>مصنع البلاستيك — الأعمال الكهروميكانيكية والحريق</h3>
+          <div class="meta">الخرج · مرفق صناعي</div>
+          <p>تنفيذ متكامل للأعمال الكهروميكانيكية وأنظمة الحريق مع اختبار وتشغيل تجريبي كامل قبل التسليم.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-compound-gates.jpg" alt="" />
+        <div class="body">
+          <div class="cat">البنية التحتية والتيار الخفيف</div>
+          <h3>بوابات المجمع الإلكترونية</h3>
+          <div class="meta">الرياض · مجمع تجاري</div>
+          <p>تركيب أنظمة بوابات إلكترونية مع بنية بيانات وألياف بصرية متكاملة، لتحقيق تحكم آمن وفعال في الدخول.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-schools-om.jpg" alt="" />
+        <div class="body">
+          <div class="cat">التشغيل والصيانة</div>
+          <h3>تشغيل وصيانة مدارس خاصة</h3>
+          <div class="meta">الرياض · مرافق تعليمية</div>
+          <p>خدمات تشغيل وصيانة شاملة تضمن بيئة تعليمية آمنة ومستقرة ودون انقطاع.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="small mt4">
+      الصور تمثل نوع العمل المعروض وليست صورة لكل موقع بعينه. تتوفر مراجع العملاء عند
+      الطلب.
+    </p>
+  </div>
+  <div class="ftr"><span>شركة ساحل للمقاولات</span><span>example.com · 04</span></div>
+</section>
+
+<style>
+  .vgrid { display: flex; flex-wrap: wrap; gap: 5mm 6mm; }
+  .val { width: calc((100% - 12mm) / 3); border-top: 2px solid var(--green); padding-top: 3mm; }
+  .val h3 { font-size: 9.5pt; }
+  .val p { font-size: 8pt; line-height: 1.5; margin-top: 1.5mm; }
+  .lead2 { display: flex; gap: 5mm; }
+  .lead2 .c { flex: 1; border: 1px solid var(--line); border-radius: 4mm; padding: 6mm; }
+  .lead2 .role { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); }
+  .lead2 .nm { font-size: 12pt; font-weight: 800; margin-top: 2mm; }
+  .lead2 .ct { font-size: 8.5pt; font-weight: 600; margin-top: 3mm; color: #33383F; }
+  .stdband { border-top: 1px solid var(--line); padding-top: 4mm; }
+  .stdband .lbl { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); }
+  .reg { display: flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 4mm; overflow: hidden; }
+  .reg > div { width: calc(100% / 3); padding: 5mm; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .reg > div:nth-child(3n) { border-right: 0; }
+  .reg > div:nth-child(n+4) { border-bottom: 0; }
+  .reg .k { font-size: 7pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .reg .v { font-size: 9pt; font-weight: 600; color: #3A4048; margin-top: 2mm; }
+  .v2030 { display: flex; align-items: center; gap: 6mm; background: var(--steel); border-radius: 4mm; padding: 6mm 7mm; }
+  .v2030 .wrap { background: #fff; border-radius: 3mm; padding: 3mm 4mm; }
+  .v2030 img { width: 26mm; height: auto; display: block; }
+  .v2030 .t { color: #fff; font-size: 10.5pt; font-weight: 700; }
+  .v2030 .s { color: rgba(255,255,255,.7); font-size: 8pt; margin-top: 1.5mm; }
+  .cta { background: var(--green); border-radius: 4mm; padding: 8mm; text-align: center; }
+  .cta h2 { color: #fff; }
+  .cta p { color: rgba(255,255,255,.92); font-size: 9.5pt; margin-top: 2mm; }
+  .cta .row { display: flex; justify-content: center; gap: 8mm; margin-top: 5mm; }
+  .cta .row > div { color: #fff; }
+  .cta .k { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+  .cta .v { font-size: 11pt; font-weight: 800; margin-top: 1mm; }
+</style>
+
+<!-- ============ PAGE 4 — VALUES, PEOPLE, COMPLIANCE ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">القيم والقيادة</span>
+    </div>
+
+    <div class="mt6">
+      <p class="eyebrow">قيمنا</p>
+      <h2 class="mt2">ستة التزامات، تُرى كلها في الموقع</h2>
+      <div class="vgrid mt4">
+        <div class="val"><h3>الجودة</h3><p>مواد معتمدة وأفضل الممارسات الهندسية، يتم التحقق منها بالفحص لا بالافتراض.</p></div>
+        <div class="val"><h3>الالتزام</h3><p>تواريخ البرنامج تُتفق مرة واحدة ثم يتم الوفاء بها. وإن ظهر ما يهدد موعدًا، تسمعه مبكرًا.</p></div>
+        <div class="val"><h3>النزاهة والشفافية</h3><p>تسعير واضح وتقارير تقدم مفتوحة، ولا مفاجآت مخبأة في أمر تغييري.</p></div>
+        <div class="val"><h3>السلامة</h3><p>الصحة والسلامة المهنية تحكم ترتيب تنفيذ الأعمال، لا مجرد ما يُقال في التعريف الأولي.</p></div>
+        <div class="val"><h3>العمل الجماعي</h3><p>مهندسونا ومقاولو الباطن واستشاري العميل يعملون من برنامج واحد منسق.</p></div>
+        <div class="val"><h3>التركيز على العميل</h3><p>نقيس أنفسنا بمدى صمود التشطيب خلال سنة الضمان، لا بيوم التسليم وحده.</p></div>
+      </div>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">القيادة</p>
+      <h2 class="mt2">من ستتعامل معه</h2>
+      <div class="lead2 mt4">
+        <div class="c">
+          <div class="role">المؤسس والمهندس المدير</div>
+          <div class="nm">المهندس عمر حسن</div>
+          <div class="ct" dir="ltr">+966 50 000 0000</div>
+          <div class="ct" dir="ltr" style="font-weight:500;color:#6B7280">info@example.com</div>
+        </div>
+        <div class="c">
+          <div class="role">الاستفسارات</div>
+          <div class="nm">مكتب المشاريع</div>
+          <div class="ct">الأحد – الخميس، 8:00 – 17:00 بتوقيت السعودية</div>
+          <div class="ct" style="font-weight:500;color:#6B7280">رد مكتوب خلال يوم عمل واحد</div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="mt8">
+      <p class="eyebrow">مجالات عملنا</p>
+      <h3 class="mt2">القطاعات التي نبني لها</h3>
+      <div class="codes mt4">
+        <div><div class="c">01</div><div class="n">سكني</div><div class="d">فلل خاصة وعمارات سكنية ووحدات في مجمع��ت — بناء جديد وتوسعات وتجديد كامل.</div></div>
+        <div><div class="c">02</div><div class="n">تجاري</div><div class="d">مكاتب ومعارض ووحدات تجارية تُجهَّز وفق معيار العلامة وتُسلَّم جاهزة للعمل.</div></div>
+        <div><div class="c">03</div><div class="n">صناعي</div><div class="d">مصانع ومستودعات، بما يشمل أعمالًا تُنفَّذ داخل مرافق قائمة وتعمل.</div></div>
+        <div><div class="c">04</div><div class="n">مؤسسي</div><div class="d">مدارس ومرافق عامة، تُجدَّد وتُصان حسب التقويم التشغيلي للمرفق.</div></div>
+      </div>
+      <p class="small mt2" style="color:var(--muted)">تتوفر مراجع العملاء عند الطلب مع ملفات المناقصات والتأهيل المسبق.</p>
+    </div>
+
+</div>
+  <div class="ftr"><span>شركة ساحل للمقاولات</span><span>example.com · 05</span></div>
+</section>
+
+<!-- ============ PAGE 5 — COMPLIANCE & CONTACT ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">الالتزام</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">السجلات والشهادات</p>
+      <h2 class="mt2">تنفيذ وفق الكود وتوثيق قابل للتدقيق</h2>
+      <p class="mt2" style="max-width:150mm">تُنفَّذ الأعمال وفق كود البناء السعودي، ومعايير NFPA للحماية من الحريق، ومعايير IEC الكهربائية، وممارسات ASHRAE لتصميم التكييف — في أعمالنا وفي الحزم التي نديرها لغيرنا.</p>
+      <h3 class="mt6">الأكواد والمعايير</h3>
+      <div class="codes mt4">
+        <div><div class="c">SBC</div><div class="n">كود البناء السعودي</div><div class="d">أحكام الإنشاءات والميكانيكا والكهرباء والسلامة من الحريق للمباني في المملكة.</div></div>
+        <div><div class="c">NFPA</div><div class="n">الحماية من الحريق</div><div class="d">تصميم وتركيب واختبار أنظمة الكشف والإنذار والمرشات وشبكات مكافحة الحريق.</div></div>
+        <div><div class="c">IEC</div><div class="n">الأنظمة الكهربائية</div><div class="d">توزيع الجهد المنخفض والحماية والتأريض واختيار الكابلات.</div></div>
+        <div><div class="c">ASHRAE</div><div class="n">تصميم التكييف</div><div class="d">حساب الأحمال ومعدلات التهوية وتوزيع الهواء.</div></div>
+      </div>
+      <p class="small mt4" style="color:var(--muted);max-width:150mm">تُطبَّق في مراجعة التصميم والتركيب والاختبار والتشغيل التجريبي. وتُرفق مستندات السجل والتصنيف والشهادات مع ملفات المناقصات والتأهيل المسبق.</p>
+    </div>
+
+    <div class="v2030 mt8">
+      <div class="wrap"><img src="../public/vision-2030.png" alt="رؤية السعودية 2030" /></div>
+      <div>
+        <div class="t">متوافقون مع رؤية السعودية 2030</div>
+        <div class="s">نبني المساحات التي يحتاجها نمو المملكة.</div>
+      </div>
+    </div>
+
+    <div class="cta mt8">
+      <h2>لنبنِ مساحتك المثالية.</h2>
+      <p>أرسل المخططات أو الموقع أو الفكرة فقط — نرد خلال يوم عمل واحد.</p>
+      <div class="row">
+        <div><div class="k">الهاتف وواتساب</div><div class="v" dir="ltr">+966 50 000 0000</div></div>
+        <div><div class="k">البريد الإلكتروني</div><div class="v" dir="ltr">info@example.com</div></div>
+        <div><div class="k">الموقع الإلكتروني</div><div class="v" dir="ltr">example.com</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span>شركة ساحل للمقاولات · جدة، المملكة العربية السعودية</span><span>example.com · 06</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   Sahil design tokens
+   --------------------------------------------------------------------------
+   Palette is derived from the Sahil logo: a single saturated construction
+   orange (#FC8400) on white, anchored by a deep graphite-navy for dark bands
+   and a warm limestone tint that reads as "Riyadh" without being literal.
+
+   Token NAMES are unchanged from the base template so all 57 shadcn/ui
+   primitives keep working; only the VALUES are retargeted. New tokens
+   (--steel, --sand) are additive.
+   ========================================================================== */
+
+/* ---- Sahil self-hosted fonts ------------------------------------------
+   Inter for Latin, Noto Kufi Arabic for Arabic. Both are variable fonts
+   (weight 100..900) served from /public/fonts, so the site needs no Google
+   Fonts request and renders the correct faces offline.
+   ========================================================================== */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Kufi Arabic";
+  src: url("/fonts/NotoKufiArabic-Variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-arabic: "Noto Kufi Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Tighter radii than the template: industrial contracting should not look soft. */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.25rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Retained names, retuned values */
+  --color-peach: var(--peach);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+
+  /* Additive */
+  --color-steel: var(--steel);
+  --color-steel-foreground: var(--steel-foreground);
+  --color-sand: var(--sand);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Ground */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.012 258);
+  --ink: oklch(0.16 0.014 258);
+
+  /* Dark band used for the credentials strip, footer and CTA sections */
+  --steel: oklch(0.212 0.024 152);
+  --steel-foreground: oklch(0.97 0.006 152);
+
+  /* Warm limestone — section washes, stat panels */
+  --sand: oklch(0.955 0.011 145);
+  --cream: oklch(0.977 0.007 145);
+
+  /* Orange tint for icon tiles and badges (accent surface, not body text) */
+  --peach: oklch(0.935 0.052 142);
+
+  --card: oklch(0.985 0.004 258);
+  --card-foreground: oklch(0.21 0.012 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.012 258);
+
+  /* Sahil green — #278608 */
+  --primary: oklch(0.525 0.163 143);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.965 0.006 258);
+  --secondary-foreground: oklch(0.21 0.012 258);
+
+  --muted: oklch(0.965 0.005 258);
+  --muted-foreground: oklch(0.505 0.014 258);
+
+  --accent: oklch(0.525 0.163 143);
+  --accent-foreground: oklch(1 0 0);
+
+  --destructive: oklch(0.58 0.21 25);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.915 0.005 258);
+  --input: oklch(0.9 0.006 258);
+  --ring: oklch(0.525 0.163 143);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Arabic gets a purpose-built Arabic face, not a Latin font with fallbacks. */
+  html[lang="ar"],
+  html[lang="ar"] body {
+    font-family: var(--font-arabic);
+  }
+  html[lang="ar"] * {
+    font-family: inherit;
+  }
+  /* Arabic has no uppercase; forcing it produces no change but breaks tracking. */
+  html[lang="ar"] .uppercase {
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  /* Numbers and phone numbers must stay LTR inside RTL text. */
+  html[dir="rtl"] .ltr-nums {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: oklch(0.525 0.163 143 / 0.2);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Small caps label used above section headings */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .gradient-green {
+    background-image: linear-gradient(135deg, oklch(0.6 0.16 145), oklch(0.44 0.13 152));
+  }
+
+  .ring-soft {
+    box-shadow:
+      0 1px 0 0 oklch(1 0 0 / 0.7) inset,
+      0 12px 40px -24px oklch(0.2 0.02 258 / 0.3);
+  }
+
+  /* Faint technical grid — used behind dark bands for an engineering feel. */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Thin orange rule used as a heading underline */
+  .rule-accent::after {
+    content: "";
+    display: block;
+    width: 2.75rem;
+    height: 3px;
+    margin-top: 1rem;
+    background: var(--color-primary);
+  }
+
+  .hairline {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@keyframes reveal-word {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*
+ * Client logo marquee. The track holds the logo list twice, so translating it
+ * by exactly -50% lands on the start of the second copy and the loop is
+ * seamless. This only holds if the track is width: max-content.
+ */
+@keyframes marquee-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .animate-reveal-word {
+    animation: reveal-word 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+  .animate-marquee {
+    animation: marquee-x 42s linear infinite;
+  }
+}
+
+/* Respect users who ask for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Park the marquee outright rather than snapping it to its end transform. */
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Arabic reads right-to-left, so the logo marquee travels the other way. */
+html[dir="rtl"] .animate-marquee {
+  animation-direction: reverse;
+}
+
+/* Flip directional icons in RTL so arrows point the right way in Arabic. */
+html[dir="rtl"] .lucide-arrow-right,
+html[dir="rtl"] .lucide-arrow-left,
+html[dir="rtl"] .lucide-arrow-up-right,
+html[dir="rtl"] .lucide-arrow-up-left,
+html[dir="rtl"] .lucide-chevron-right,
+html[dir="rtl"] .lucide-chevron-left,
+html[dir="rtl"] .lucide-chevrons-right,
+html[dir="rtl"] .lucide-chevrons-left,
+html[dir="rtl"] .lucide-move-right,
+html[dir="rtl"] .lucide-move-left,
+html[dir="rtl"] .lucide-send,
+html[dir="rtl"] .lucide-download {
+  transform: scaleX(-1);
+}
+
+/* Arabic descenders clip at tight leading — give headline lines more room. */
+html[dir="rtl"] .rtl-lines {
+  line-height: 1.5;
+}
+
+/* Mirror the accent rule in RTL. */
+html[dir="rtl"] .rule-accent::after {
+  margin-inline-start: 0;
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+}

@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sahil — Company Profile</title>
+<style>
+  @page { size: A4; margin: 0; }
+  /* Sahil profile fonts -- resolved from ../public/fonts so this file
+     renders in the correct faces on any machine, with no network. */
+  @font-face { font-family: "Inter"; src: url("../public/fonts/Inter-Variable.ttf") format("truetype-variations"); font-weight: 100 900; font-style: normal; }
+  @font-face { font-family: "Noto Kufi Arabic"; src: url("../public/fonts/NotoKufiArabic-Variable.ttf") format("truetype-variations"); font-weight: 100 900; font-style: normal; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green: #278608;
+    --ink: #16181C;
+    --steel: #1E2620;
+    --sand: #F1F5EF;
+    --peach: #E6F2E0;
+    --line: #DCE3D8;
+    --muted: #6B7280;
+  }
+  body {
+    font-family: "Inter", "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm; height: 297mm;
+    position: relative; overflow: hidden;
+    page-break-after: always;
+    background: #fff;
+  }
+  .page:last-child { page-break-after: auto; }
+  .pad {
+    padding: 18mm 16mm 24mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .eyebrow {
+    font-size: 8pt; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--green);
+  }
+  h1 { font-size: 34pt; line-height: 1.06; font-weight: 800; letter-spacing: -.02em; }
+  h2 { font-size: 19pt; line-height: 1.15; font-weight: 800; letter-spacing: -.01em; }
+  h3 { font-size: 11pt; line-height: 1.25; font-weight: 700; }
+  p  { font-size: 9.5pt; line-height: 1.62; color: #33383F; }
+  .lead { font-size: 11pt; line-height: 1.55; color: #2B3038; }
+  .small { font-size: 8pt; line-height: 1.5; color: var(--muted); }
+  .rule { height: 3px; width: 54px; background: var(--green); border-radius: 2px; }
+  .mt2 { margin-top: 2mm; } .mt4 { margin-top: 4mm; } .mt6 { margin-top: 6mm; }
+  .mt8 { margin-top: 8mm; } .mt12 { margin-top: 12mm; }
+
+  /* ---------- cover ---------- */
+  .cover { position: absolute; inset: 0; }
+  .cover img.bg { width: 100%; height: 100%; object-fit: cover; }
+  .cover .veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(22,24,28,.72) 0%, rgba(22,24,28,.62) 42%, rgba(22,24,28,.94) 100%);
+  }
+  .cover .inner {
+    position: absolute; inset: 0; padding: 18mm 16mm;
+    display: flex; flex-direction: column; justify-content: space-between;
+    color: #fff;
+  }
+  .cover h1 { color: #fff; max-width: 150mm; }
+  .cover .lead { color: rgba(255,255,255,.86); max-width: 130mm; }
+  .badge {
+    display: inline-block; padding: 2.4mm 5mm; border-radius: 99px;
+    background: rgba(252,132,0,.16); border: 1px solid rgba(252,132,0,.55);
+    color: #FFC780; font-size: 8pt; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .cstrip {
+    display: flex; gap: 8mm; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,.22); padding-top: 6mm;
+  }
+  .cstrip > div { min-width: 40mm; }
+  .cstrip .k {
+    font-size: 7pt; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255,255,255,.55);
+  }
+  .cstrip .v { font-size: 10pt; font-weight: 700; color: #fff; margin-top: 1.5mm; }
+</style>
+<style>
+/* Client logo band -- normalised 3:1 logo boxes, three per row. */
+.clients { display:flex; flex-wrap:wrap; border:1px solid var(--line); border-radius:4mm; overflow:hidden; background:#fff; }
+.clients > div { width:calc(100% / 3); padding:4.5mm 5mm; border-inline-end:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+.clients > div:nth-child(3n) { border-inline-end:0; }
+.clients > div:nth-child(n+4) { border-bottom:0; }
+.clients img { width:100%; max-width:38mm; height:auto; display:block; }
+</style>
+<style>
+    .codes { display:flex; flex-wrap:wrap; border:1px solid var(--line); border-radius:4mm; overflow:hidden; background:#fff; }
+    .codes > div { width:calc(100% / 2); padding:5mm 5.5mm; border-inline-end:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .codes > div:nth-child(2n) { border-inline-end:0; }
+    .codes > div:nth-child(n+3) { border-bottom:0; }
+    .codes .c { font-size:9pt; font-weight:800; color:var(--green); letter-spacing:0.04em; }
+    .codes .n { font-size:9.5pt; font-weight:700; margin-top:1.2mm; }
+    .codes .d { font-size:8pt; line-height:1.55; color:var(--muted); margin-top:1.4mm; }
+  </style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="page">
+  <div class="cover">
+    <img class="bg" src="../src/assets/mn-hero-site.jpg" alt="" />
+    <div class="veil"></div>
+    <div class="inner">
+      <div>
+        <img src="../public/sahil-logo-white.png" style="width:34mm;height:auto" alt="Sahil" />
+        <div class="mt8"><span class="badge">Company Profile · 2026</span></div>
+      </div>
+      <div>
+        <p class="eyebrow">Jeddah · Kingdom of Saudi Arabia</p>
+        <h1 class="mt4">Let's build<br />your living<br />space.</h1>
+        <p class="lead mt6">
+          Sahil Contracting Co. builds, finishes and fits out residential,
+          commercial and industrial projects in Jeddah and across the Kingdom — one
+          contractor accountable from the first drawing to the handover snag list.
+        </p>
+      </div>
+      <div class="cstrip">
+        <div><div class="k">Phone</div><div class="v">+966 50 000 0000</div></div>
+        <div><div class="k">Email</div><div class="v">info@example.com</div></div>
+        <div><div class="k">Web</div><div class="v">example.com</div></div>
+        <div><div class="k">Head office</div><div class="v">Jeddah, KSA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line); padding-bottom: 5mm;
+  }
+  .hdr img { width: 22mm; height: auto; }
+  .hdr .pg { font-size: 8pt; font-weight: 700; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
+  .ftr {
+    position: absolute; bottom: 10mm; left: 16mm; right: 16mm;
+    display: flex; justify-content: space-between;
+    border-top: 1px solid var(--line); padding-top: 4mm;
+    font-size: 7.5pt; color: var(--muted);
+  }
+  .stats { display: flex; border: 1px solid var(--line); border-radius: 4mm; overflow: hidden; }
+  .stats > div { flex: 1; padding: 6mm 4mm; text-align: center; border-right: 1px solid var(--line); }
+  .stats > div:last-child { border-right: 0; }
+  .stats .n { font-size: 22pt; font-weight: 800; color: var(--green); line-height: 1; }
+  .stats .l { font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 2mm; }
+  .two { display: flex; gap: 6mm; }
+  .card { border: 1px solid var(--line); border-radius: 4mm; padding: 7mm; }
+  .card.sand { background: var(--sand); }
+  .svc { display: flex; gap: 6mm; align-items: flex-start; padding: 5mm 0; border-bottom: 1px solid var(--line); }
+  .svc:last-child { border-bottom: 0; }
+  .svc .num {
+    width: 11mm; height: 11mm; flex: 0 0 11mm; border-radius: 3mm;
+    background: var(--peach); color: var(--green);
+    font-size: 11pt; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 3mm; }
+  .chip {
+    font-size: 7.5pt; font-weight: 600; color: #3A4048;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 99px; padding: 1.4mm 3.4mm;
+  }
+</style>
+
+<!-- ============ PAGE 2 — WHO WE ARE ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">Who we are</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">About us</p>
+      <h2 class="mt2">One contractor, accountable end to end</h2>
+      <div class="rule mt4"></div>
+      <p class="mt4">
+        Sahil is the trading name of Sahil Contracting Co., a Jeddah-based general
+        contractor working across residential, commercial, industrial and institutional
+        projects in Saudi Arabia. We take a project from structure through to finishes,
+        joinery and furniture — the whole of the work a building needs before anyone can
+        move into it.
+      </p>
+      <p class="mt4">
+        Because building, finishing, interiors and project management sit inside one
+        company, the client signs one contract and holds one party responsible. Around
+        twenty engineers and a site workforce of roughly two hundred deliver against a
+        published programme, with progress reported against that programme rather than
+        described in general terms, and a one-year warranty on completed works.
+      </p>
+    </div>
+
+    <div class="stats mt8">
+      <div><div class="n">8+</div><div class="l">Years operating</div></div>
+      <div><div class="n">20+</div><div class="l">Engineers on staff</div></div>
+      <div><div class="n">200+</div><div class="l">Site workforce</div></div>
+      <div><div class="n">4</div><div class="l">Service lines</div></div>
+    </div>
+
+    <div class="two mt8">
+      <div class="card sand" style="flex:1">
+        <p class="eyebrow">Vision</p>
+        <p class="mt2">
+          To be the contractor Saudi clients name first when a project has to be built
+          properly and handed over on the agreed date — growing with the Kingdom's
+          development goals and Saudi Vision 2030.
+        </p>
+      </div>
+      <div class="card sand" style="flex:1">
+        <p class="eyebrow">Mission</p>
+        <p class="mt2">
+          To deliver building, finishing, interiors and project management under one
+          accountable contract — approved materials, qualified supervision, an honest
+          programme, and a finish that survives the first year of use.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class="ftr"><span>Sahil Contracting Co.</span><span>example.com · 02</span></div>
+</section>
+
+<!-- ============ PAGE 3 — SERVICES ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">What we do</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">What we do</p>
+      <h2 class="mt2">Four service lines, one accountable contractor</h2>
+      <div class="svc mt4">
+        <div class="num">01</div>
+        <div>
+          <h3>Building &amp; Construction</h3>
+          <p class="mt2">Villas, commercial buildings, factories and extensions taken from setting out through structure and envelope to a weather-tight, serviceable building — executed to the Saudi Building Code with inspection records kept as the work proceeds.</p>
+          <div class="chips">
+            <span class="chip">Excavation</span><span class="chip">Concrete frame</span>
+            <span class="chip">Blockwork</span><span class="chip">Envelope</span>
+            <span class="chip">Building services</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="num">02</div>
+        <div>
+          <h3>Interior &amp; Exterior Finishing</h3>
+          <p class="mt2">The trades that decide how a building is judged: plaster, tiling, marble, paint, gypsum and false ceilings, doors and external cladding — set out from a finishing schedule so levels, joints and tolerances are agreed before anyone starts.</p>
+          <div class="chips">
+            <span class="chip">Plaster &amp; paint</span><span class="chip">Tiling &amp; marble</span>
+            <span class="chip">Gypsum ceilings</span><span class="chip">Doors</span>
+            <span class="chip">Facades</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="num">03</div>
+        <div>
+          <h3>Furniture &amp; Interior Design</h3>
+          <p class="mt2">Space planning, joinery and loose furniture specified and installed as one package, so the interior that was presented is the interior that gets built — kitchens, wardrobes, reception counters and lighting selections included.</p>
+          <div class="chips">
+            <span class="chip">Space planning</span><span class="chip">Joinery</span>
+            <span class="chip">Kitchens</span><span class="chip">Lighting</span>
+            <span class="chip">Furnishing</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="num">04</div>
+        <div>
+          <h3>Project Management</h3>
+          <p class="mt2">Programme, procurement, subcontractor coordination, quality inspection and cost control — available on our own works or as a standalone service on a project another contractor is executing.</p>
+          <div class="chips">
+            <span class="chip">Programme</span><span class="chip">Procurement</span>
+            <span class="chip">Supervision</span><span class="chip">Handover</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt8">
+      <img src="../src/assets/mn-hero-site.jpg" alt="" style="width:100%;height:54mm;object-fit:cover;border-radius:4mm;display:block" />
+      <p class="small mt2">Our own engineers and supervisors on site, on projects we are contractually responsible for.</p>
+    </div>
+  </div>
+  <div class="ftr"><span>Sahil Contracting Co.</span><span>example.com · 03</span></div>
+</section>
+
+<style>
+  .pgrid { display: flex; flex-wrap: wrap; gap: 3mm 5mm; }
+  .proj {
+    width: calc((100% - 5mm) / 2);
+    border: 1px solid var(--line); border-radius: 4mm; overflow: hidden;
+  }
+  .proj img { width: 100%; height: 19mm; object-fit: cover; display: block; }
+  .proj .body { padding: 3.4mm 4.5mm; }
+  .proj .cat {
+    font-size: 6.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--green);
+  }
+  .proj h3 { margin-top: 2mm; font-size: 10pt; }
+  .proj .meta { font-size: 7.5pt; color: var(--muted); margin-top: 1.5mm; font-weight: 600; }
+  .proj p { font-size: 8pt; line-height: 1.5; margin-top: 2.5mm; }
+</style>
+
+<!-- ============ PAGE 3 — PROJECTS ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">Selected projects</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">Portfolio</p>
+      <h2 class="mt2">Selected delivered projects</h2>
+      <div class="rule mt4"></div>
+      <p class="mt4" style="max-width:150mm">
+        Industrial, commercial and institutional work, large and small. Each of the
+        following was executed to the applicable Saudi Building Code, NFPA, IEC and
+        ASHRAE requirements, with testing and commissioning documented at handover.
+      </p>
+    </div>
+
+    <div class="pgrid mt4">
+      <div class="proj">
+        <img src="../src/assets/mn-proj-telecom-ict.jpg" alt="" />
+        <div class="body">
+          <div class="cat">Operations &amp; Maintenance</div>
+          <h3>Telecom Network — Multi-site O&amp;M</h3>
+          <div class="meta">Riyadh · Multi-site Operations</div>
+          <p>Operation and maintenance of ICT networks across multiple sites, ensuring stable performance, reduced downtime and reliable service delivery.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-packaging-mep-fire.jpg" alt="" />
+        <div class="body">
+          <div class="cat">Building Services &amp; Fire</div>
+          <h3>Packaging Factory — Services &amp; Fire</h3>
+          <div class="meta">Al Kharj · Industrial Facility</div>
+          <p>Building services and fire protection executed inside a live industrial facility, in compliance with industrial safety and engineering standards.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-medical-plantroom.jpg" alt="" />
+        <div class="body">
+          <div class="cat">Building Services &amp; Fire</div>
+          <h3>Medical Factory — Services &amp; Fire</h3>
+          <div class="meta">Al Kharj · Industrial Facility</div>
+          <p>Code-based mechanical and electrical installation delivering reliable, efficient systems for continuous industrial operation.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-plastics-commissioning.jpg" alt="" />
+        <div class="body">
+          <div class="cat">Building Services &amp; Fire</div>
+          <h3>Plastics Factory — Services &amp; Fire</h3>
+          <div class="meta">Al Kharj · Industrial Facility</div>
+          <p>Integrated execution of building services and fire systems with full testing and commissioning before handover.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-compound-gates.jpg" alt="" />
+        <div class="body">
+          <div class="cat">Infrastructure &amp; Low Current</div>
+          <h3>Compound Electronic Gates</h3>
+          <div class="meta">Riyadh · Commercial Complex</div>
+          <p>Installation of electronic gate systems with integrated data and fiber infrastructure, delivering secure and efficient access control.</p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="../src/assets/mn-proj-schools-om.jpg" alt="" />
+        <div class="body">
+          <div class="cat">Operations &amp; Maintenance</div>
+          <h3>Private Schools O&amp;M</h3>
+          <div class="meta">Riyadh · Educational Facilities</div>
+          <p>Comprehensive operation and maintenance services ensuring safe, stable and uninterrupted educational environments.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="small mt4">
+      Photography is representative of the scope of work shown and is not a photograph of
+      each specific site. Client references available on request.
+    </p>
+  </div>
+  <div class="ftr"><span>Sahil Contracting Co.</span><span>example.com · 04</span></div>
+</section>
+
+<style>
+  .vgrid { display: flex; flex-wrap: wrap; gap: 5mm 6mm; }
+  .val { width: calc((100% - 12mm) / 3); border-top: 2px solid var(--green); padding-top: 3mm; }
+  .val h3 { font-size: 9.5pt; }
+  .val p { font-size: 8pt; line-height: 1.5; margin-top: 1.5mm; }
+  .lead2 { display: flex; gap: 5mm; }
+  .lead2 .c { flex: 1; border: 1px solid var(--line); border-radius: 4mm; padding: 6mm; }
+  .lead2 .role { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); }
+  .lead2 .nm { font-size: 12pt; font-weight: 800; margin-top: 2mm; }
+  .lead2 .ct { font-size: 8.5pt; font-weight: 600; margin-top: 3mm; color: #33383F; }
+  .stdband { border-top: 1px solid var(--line); padding-top: 4mm; }
+  .stdband .lbl { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--green); }
+  .reg { display: flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 4mm; overflow: hidden; }
+  .reg > div { width: calc(100% / 3); padding: 5mm; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .reg > div:nth-child(3n) { border-right: 0; }
+  .reg > div:nth-child(n+4) { border-bottom: 0; }
+  .reg .k { font-size: 7pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .reg .v { font-size: 9pt; font-weight: 600; color: #3A4048; margin-top: 2mm; }
+  .v2030 { display: flex; align-items: center; gap: 6mm; background: var(--steel); border-radius: 4mm; padding: 6mm 7mm; }
+  .v2030 .wrap { background: #fff; border-radius: 3mm; padding: 3mm 4mm; }
+  .v2030 img { width: 26mm; height: auto; display: block; }
+  .v2030 .t { color: #fff; font-size: 10.5pt; font-weight: 700; }
+  .v2030 .s { color: rgba(255,255,255,.7); font-size: 8pt; margin-top: 1.5mm; }
+  .cta { background: var(--green); border-radius: 4mm; padding: 8mm; text-align: center; }
+  .cta h2 { color: #fff; }
+  .cta p { color: rgba(255,255,255,.92); font-size: 9.5pt; margin-top: 2mm; }
+  .cta .row { display: flex; justify-content: center; gap: 8mm; margin-top: 5mm; }
+  .cta .row > div { color: #fff; }
+  .cta .k { font-size: 7pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+  .cta .v { font-size: 11pt; font-weight: 800; margin-top: 1mm; }
+</style>
+
+<!-- ============ PAGE 4 — VALUES, PEOPLE, COMPLIANCE ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">Values &amp; leadership</span>
+    </div>
+
+    <div class="mt6">
+      <p class="eyebrow">Our values</p>
+      <h2 class="mt2">Six commitments, all of them visible on site</h2>
+      <div class="vgrid mt4">
+        <div class="val"><h3>Quality</h3><p>Approved materials and engineering best practice, verified by inspection rather than assumed.</p></div>
+        <div class="val"><h3>Commitment</h3><p>Programme dates are agreed once and then met. If something threatens a date, you hear it early.</p></div>
+        <div class="val"><h3>Integrity &amp; transparency</h3><p>Open pricing, open progress reporting, and no surprises buried in a variation order.</p></div>
+        <div class="val"><h3>Safety</h3><p>Occupational health and safety governs how work is sequenced, not just what gets briefed at induction.</p></div>
+        <div class="val"><h3>Team work</h3><p>Our engineers, subcontractors and the client's consultants work from one coordinated programme.</p></div>
+        <div class="val"><h3>Customer focus</h3><p>We measure ourselves on how the finish holds up through the warranty year, not on handover day alone.</p></div>
+      </div>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">Leadership</p>
+      <h2 class="mt2">Who you will be dealing with</h2>
+      <div class="lead2 mt4">
+        <div class="c">
+          <div class="role">Founder &amp; Managing Engineer</div>
+          <div class="nm">Eng. Omar Hassan</div>
+          <div class="ct">+966 50 000 0000</div>
+          <div class="ct" style="font-weight:500;color:#6B7280">info@example.com</div>
+        </div>
+        <div class="c">
+          <div class="role">Enquiries</div>
+          <div class="nm">Project desk</div>
+          <div class="ct">Sunday – Thursday, 8:00 – 17:00 AST</div>
+          <div class="ct" style="font-weight:500;color:#6B7280">Written reply within one working day</div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="mt8">
+      <p class="eyebrow">Where we work</p>
+      <h3 class="mt2">Sectors we build for</h3>
+      <div class="codes mt4">
+        <div><div class="c">01</div><div class="n">Residential</div><div class="d">Private villas, apartment buildings and compound units — new build, extension and full refurbishment.</div></div>
+        <div><div class="c">02</div><div class="n">Commercial</div><div class="d">Offices, showrooms and retail units fitted out to a brand standard and handed over ready to trade.</div></div>
+        <div><div class="c">03</div><div class="n">Industrial</div><div class="d">Factories and warehouses, including works executed inside operating facilities.</div></div>
+        <div><div class="c">04</div><div class="n">Institutional</div><div class="d">Schools and public-use facilities, refurbished and maintained around the operating calendar.</div></div>
+      </div>
+      <p class="small mt2" style="color:var(--muted)">Client references are available on request with tender and prequalification submissions.</p>
+    </div>
+
+</div>
+  <div class="ftr"><span>Sahil Contracting Co.</span><span>example.com · 05</span></div>
+</section>
+
+<!-- ============ PAGE 5 — COMPLIANCE & CONTACT ============ -->
+<section class="page">
+  <div class="pad">
+    <div class="hdr">
+      <img src="../public/sahil-logo-dark.png" alt="Sahil" />
+      <span class="pg">Compliance</span>
+    </div>
+
+    <div class="mt8">
+      <p class="eyebrow">Registration &amp; certification</p>
+      <h2 class="mt2">Executed to code, documented for audit</h2>
+      <p class="mt2" style="max-width:150mm">Work is executed to the Saudi Building Code, NFPA fire protection standards, IEC electrical standards and ASHRAE HVAC design practice — on our own works and on the packages we manage for others.</p>
+      <h3 class="mt6">Codes &amp; standards</h3>
+      <div class="codes mt4">
+        <div><div class="c">SBC</div><div class="n">Saudi Building Code</div><div class="d">Structural, mechanical, electrical and fire safety provisions for buildings in the Kingdom.</div></div>
+        <div><div class="c">NFPA</div><div class="n">Fire protection</div><div class="d">Fire detection, alarm, sprinkler and standpipe design, installation and testing.</div></div>
+        <div><div class="c">IEC</div><div class="n">Electrical systems</div><div class="d">Low-voltage distribution, protection, earthing and cable selection.</div></div>
+        <div><div class="c">ASHRAE</div><div class="n">HVAC design</div><div class="d">Load calculation, ventilation rates and air distribution.</div></div>
+      </div>
+      <p class="small mt4" style="color:var(--muted);max-width:150mm">Applied across design review, installation, testing and commissioning. Registration, classification and certification documents are issued with tender and prequalification submissions.</p>
+    </div>
+
+    <div class="v2030 mt8">
+      <div class="wrap"><img src="../public/vision-2030.png" alt="Saudi Vision 2030" /></div>
+      <div>
+        <div class="t">Aligned with Saudi Vision 2030</div>
+        <div class="s">Building the spaces the Kingdom’s growth is asking for.</div>
+      </div>
+    </div>
+
+    <div class="cta mt8">
+      <h2>Let’s build your living space.</h2>
+      <p>Send the drawings, the site or just the idea — we reply within one working day.</p>
+      <div class="row">
+        <div><div class="k">Phone &amp; WhatsApp</div><div class="v">+966 50 000 0000</div></div>
+        <div><div class="k">Email</div><div class="v">info@example.com</div></div>
+        <div><div class="k">Web</div><div class="v">example.com</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span>Sahil Contracting Co. · Jeddah, Kingdom of Saudi Arabia</span><span>example.com · 06</span></div>
+</section>
+
+</body>
+</html>
